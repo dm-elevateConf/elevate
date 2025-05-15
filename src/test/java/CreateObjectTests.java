@@ -19,8 +19,8 @@ public class CreateObjectTests {
                         accept(ContentType.JSON).
                         contentType(ContentType.JSON).
                         body(nd).
-                        when().
-                        post(Endpoints.baseUrl + Endpoints.objects);
+               when().
+               post(Endpoints.baseUrl + Endpoints.objects);
         assertEquals(response.statusCode(), HttpStatus.OK_200);
 
         JsonPath responseContents = new JsonPath(response.getBody().prettyPrint());

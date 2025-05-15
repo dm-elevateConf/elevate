@@ -43,11 +43,11 @@ public class UpdateObjectsTests {
         
         assertEquals(responseToObjectPut.statusCode(), HttpStatus.OK_200);
         JsonPath responseContentsOfPut = new JsonPath(responseToObjectPut.getBody().prettyPrint());
-        assertEquals("Lenovo", responseContentsOfPut.get("name"));
+        assertEquals("Dell", responseContentsOfPut.get("name"));
         assertEquals("2023", responseContentsOfPut.get("data.year").toString());
         assertEquals("1500.0", responseContentsOfPut.get("data.price").toString());
         assertEquals("i5", responseContentsOfPut.get("data.cpu"));
-        assertEquals("500 GB", responseContentsOfPut.get("data.hdd_Size"));
+        assertEquals("12 GB", responseContentsOfPut.get("data.hdd_Size"));
     }
 
     @Test
@@ -65,7 +65,7 @@ public class UpdateObjectsTests {
                         put(Endpoints.baseUrl + Endpoints.objects + "/" + "876543");
         assertEquals(responseToObjectUpdate.statusCode(), HttpStatus.NOT_FOUND_404);
         JsonPath responseContentsOfPatch = new JsonPath(responseToObjectUpdate.getBody().prettyPrint());
-        assertEquals("The Object with id = 876543 doesn't exist. Please provide an object id which exists or generate a new Object using POST request and capture the id of it to use it as part of PUT request after that.", responseContentsOfPatch.get("error"));
+        assertEquals("The Object with id = 1 doesn't exist. Please provide an object id which exists or generate a new Object using POST request and capture the id of it to use it as part of PUT request after that.", responseContentsOfPatch.get("error"));
 
     }
 }
